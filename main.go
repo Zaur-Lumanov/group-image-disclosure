@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -42,7 +43,8 @@ func main() {
 	datapart := []byte(uri[4])[len(uri[4])-3:]
 
 	for _, v := range members {
-		strint := strconv.Itoa(v)
+		strint := fmt.Sprintf("%08d", strconv.Itoa(v))[11:20]
+
 		if string(datapart) == string([]byte(strint)[len(strint)-3:]) {
 			log.Println("https://vk.com/id" + strconv.Itoa(v))
 		}
